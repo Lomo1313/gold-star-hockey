@@ -1,0 +1,11 @@
+# netlify.toml — root of your project
+
+[build]
+  publish = "."          # your HTML lives in the root; change to "dist" or "public" if needed
+  functions = "netlify/functions"
+
+# Rewrite /api/ep/* → the serverless function so the HTML can use a clean URL
+[[redirects]]
+  from = "/api/ep/*"
+  to   = "/.netlify/functions/ep/:splat"
+  status = 200
